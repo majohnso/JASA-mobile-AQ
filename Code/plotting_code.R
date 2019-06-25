@@ -34,7 +34,7 @@ p0 = get_map(location = c(lon = -122.2505, lat = mean(pred_block$Latitude)),
              zoom = 12, maptype = 'toner-lite', source="stamen")
 
 # load data ---------------------------------------------------------------
-covs_name <- "Data_Covariates_SAMSI_20171129.csv" #GIS covariates
+covs_name <- "Data_Covariates.csv" #GIS covariates
 goog_name <- "oakland_data_simulated.csv"
 
 covs      <- read.csv(covs_name,nrows=Inf)

@@ -25,7 +25,7 @@ source('Rfunctions_GC.R')
 
 # Select tracks ---------------------------------------------------------
 ######## set up covariate data ########
-covs_name <- "Data_Covariates_SAMSI_20171129.csv"
+covs_name <- "Data_Covariates.csv"
 covs      <- read.csv(covs_name,nrows=Inf)
 
 X_names   <- colnames(covs)

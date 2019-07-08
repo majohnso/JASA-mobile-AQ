@@ -1,24 +1,26 @@
----
-title: "README"
-output: rmarkdown::github_document
----
+README
+================
 
-## Data Files
+Data Files
+----------
 
-###
+### 
 
-## R/C++ Files
-###
+R/C++ Files
+-----------
 
-## Reproducing the analysis on simulated data
+### 
 
-The R script run_all_code.R illustrates the analysis performed in "title" using simulated data. An interested user can obtain the actual data used from 'website', in which case the R script should recreate the analysis included in the paper. 
+Reproducing the analysis on simulated data
+------------------------------------------
 
-The following section walks through the various components of "run_all_code.R."
+The R script run\_all\_code.R illustrates the analysis performed in "title" using simulated data. An interested user can obtain the actual data used from 'website', in which case the R script should recreate the analysis included in the paper.
+
+The following section walks through the various components of "run\_all\_code.R."
 
 ### Set Parameters
-```{r setup_params, eval=FALSE}
 
+``` r
 rolling_window = FALSE # should rolling window estimation be performed (computationally expensive)
 
 type <- 2; # type in 1:3, defines which data product to use 
@@ -41,7 +43,7 @@ maxit <- 1e3 # maximum number of iterations for Nelder-Mead maximization of Vecc
 
 ### Load R Packages
 
-```{r packages, eval=FALSE}
+``` r
 pkg.names <- c("Rcpp", "RcppArmadillo", "doParallel", "RANN", "chron", "fields", "dplyr", "FNN", "ggplot2", "ggmap")
 for(i in 1:length(pkg.names)){
   if(pkg.names[i] %in% rownames(installed.packages()) == FALSE) {
@@ -58,14 +60,15 @@ if(sum(lp)!=length(pkg.names)){
 ```
 
 ### Source R Functions
-```{r functions, eval=FALSE}
+
+``` r
 source("Rfunctions_GC.R")
 sourceCpp("cpp_code_GC.cpp")
 ```
 
 ### Process Raw Data and Perform Temporal Aggregation
 
-```{r agg, eval=FALSE}
+``` r
 source("data_setup.R")
 ## Necessary files loaded in data_setup.R:
 # Data_IDs.csv # road segment ID
@@ -74,7 +77,8 @@ source("data_setup.R")
 ```
 
 ### Model Fitting Setup
-```{r fitting, eval=FALSE}
+
+``` r
 ########### Set Up Data For Model Fitting ##########
 h <- c(0.02, 5, 15, 60) # minutes
 m <- c(10, 30, 60) # minutes 
@@ -116,7 +120,7 @@ if(rolling_window){
 
 ### Fit Models
 
-```{r models, eval=FALSE}
+``` r
 source("st_stx_estimation_prediction.R") 
 # ST and STx Vecchia estimation and prediction 
 # for type, and combination of h (j) and m (jj)
@@ -133,7 +137,8 @@ source("spatial_only_estimation_prediction.R")
 ```
 
 ### Map Forecasts
-```{r maps, eval=FALSE}
+
+``` r
 # run for dayidx = 253 and dayidx = 490 
 if(type == 2){
   for(dayidx in c(253, 490)){
@@ -143,8 +148,8 @@ if(type == 2){
 ```
 
 ### Mobile vs. Stationary Simulation
-```{r deployment, eval=FALSE}
 
+``` r
 source("deployment_design.R")
 # NOTE: this takes a long time to run
 ```

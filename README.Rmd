@@ -1,7 +1,6 @@
 ---
 title: "README"
-date: "7/8/2019"
-output: html_document
+output: github_document
 ---
 
 ## Data Files

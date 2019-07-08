@@ -14,7 +14,7 @@ R/C++ Files
 Reproducing the analysis on simulated data
 ------------------------------------------
 
-The R script run\_all\_code.R illustrates the analysis performed in "title" using simulated data. An interested user can obtain the actual data used from 'website', in which case the R script should recreate the analysis included in the paper.
+The R script run\_all\_code.R illustrates the analysis performed in "title" using simulated data. An interested user can obtain the actual data used from [here](https://docs.google.com/forms/d/e/1FAIpQLSf_4GIkK1tmVMFRSxz42KgvOM3Z3NGeOFFje_FS8FBbz1vTig/viewform), in which case the R script should recreate the analysis included in the paper.
 
 The following section walks through the various components of "run\_all\_code.R."
 

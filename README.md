@@ -4,19 +4,30 @@ README
 Data Files
 ----------
 
-### 
+-   oakland\_data\_simulated.csv
+-   Data\_IDs.csv
+-   Data\_Covariates.csv
 
 R/C++ Files
 -----------
 
-### 
+-   <tt> data\_setup.R </tt>
+-   <tt> cpp\_code\_GC.cpp </tt>
+-   <tt> Rfunctions\_GC.R </tt>
+-   <tt> rolling\_window\_estimation.R </tt>
+-   <tt> spatial\_only\_estimation\_prediciton.R </tt>
+-   <tt> st\_stx\_estimation\_prediction.R </tt>
+-   <tt> deployment\_design.R </tt>
+-   <tt> 15min\_map\_forecasts.R </tt>
+-   <tt> plotting\_code.R </tt>
+-   <tt> run\_all\_code.R </tt>
 
 Reproducing the analysis on simulated data
 ------------------------------------------
 
-The R script run\_all\_code.R illustrates the analysis performed in "title" using simulated data. An interested user can obtain the actual data used from [here](https://docs.google.com/forms/d/e/1FAIpQLSf_4GIkK1tmVMFRSxz42KgvOM3Z3NGeOFFje_FS8FBbz1vTig/viewform), in which case the R script should recreate the analysis included in the paper.
+The R script <tt> run\_all\_code.R </tt> illustrates the analysis performed in \`\`Fine-scale spatiotemporal air pollution analysis using mobile monitors on Google Street View vehicles" using simulated data. An interested user can obtain the actual data used from [here](https://docs.google.com/forms/d/e/1FAIpQLSf_4GIkK1tmVMFRSxz42KgvOM3Z3NGeOFFje_FS8FBbz1vTig/viewform), in which case the <tt> R </tt> script should recreate the analysis included in the paper.
 
-The following section walks through the various components of "run\_all\_code.R."
+The following section walks through the various components of <tt> run\_all\_code.R </tt>.
 
 ### Set Parameters
 
@@ -70,7 +81,7 @@ sourceCpp("cpp_code_GC.cpp")
 
 ``` r
 source("data_setup.R")
-## Necessary files loaded in data_setup.R:
+# Necessary files loaded in data_setup.R:
 # Data_IDs.csv # road segment ID
 # Data_Covariates.csv #GIS covariates
 # oakland_data_simulated.csv # simulated Google car dataset

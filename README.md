@@ -4,9 +4,70 @@ README
 Data Files
 ----------
 
--   oakland\_data\_simulated.csv
--   Data\_IDs.csv
--   Data\_Covariates.csv
+#### oakland\_data\_simulated.csv
+
+-   Contains simulated Oakland Air Quality data
+-   Variables include:
+    -   Date\_Time
+    -   Car\_Identifier
+    -   Latitude
+    -   Longitude
+    -   Car\_Speed
+    -   NO2
+
+#### Data\_IDs.csv
+
+-   Contains 30m road segment IDs
+-   Variables include:
+    -   Longitude
+    -   Latitude
+    -   ID
+
+#### Data\_Covariates.csv
+
+-   Contains spatial covariate data
+-   Variables include:
+    -   ID
+    -   Long30m
+    -   Lat30m
+    -   Hwy\_Roads
+    -   Major\_Roads
+    -   Res\_Roads
+    -   Local\_Trucks
+    -   Local\_Restricted\_Trucks
+    -   Commerical.Zone
+    -   Industrial.Zone
+    -   Residential.Zone
+    -   NDVI\_50
+    -   NLCD\_Water\_50
+    -   NLCD\_DevOpen\_50
+    -   NLCD\_DevLow\_50
+    -   NLCD\_DevMed\_50
+    -   NLCD\_DevHigh\_50
+    -   NLCD\_Barren\_50
+    -   NLCD\_Deciduous\_50
+    -   NLCD\_Evergreen\_50
+    -   NLCD\_MixForest\_50
+    -   NLCD\_Shrub\_50
+    -   NLCD\_Herbaceous\_50
+    -   NLCD\_Pasture\_50
+    -   NLCD\_Crops\_50
+    -   NLCD\_WoodyWet\_50
+    -   NLCD\_EmergWet\_50
+    -   Impervious\_50
+    -   Distance\_to\_NPL
+    -   Distance\_to\_Rail
+    -   Elevation\_50
+    -   Distance\_to\_TRI
+    -   Total\_Road\_50
+    -   Hwy\_Road\_50
+    -   Maj\_Road\_50
+    -   Res\_Road\_50
+    -   Pop\_50
+    -   MinDist2Port
+    -   MinDist2MainPort
+    -   Dist2MainAirport
+    -   Dist2Airport
 
 R/C++ Files
 -----------

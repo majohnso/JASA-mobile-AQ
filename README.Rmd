@@ -5,9 +5,67 @@ output: rmarkdown::github_document
 
 ## Data Files
 
-  - oakland_data_simulated.csv
-  - Data_IDs.csv
-  - Data_Covariates.csv
+#### oakland_data_simulated.csv
+  - Contains simulated Oakland Air Quality data
+  - Variables include:
+    - Date_Time
+    - Car_Identifier
+    - Latitude
+    - Longitude
+    - Car_Speed
+    - NO2
+    
+#### Data_IDs.csv
+  - Contains 30m road segment IDs
+  - Variables include:
+    - Longitude
+    - Latitude
+    - ID
+    
+#### Data_Covariates.csv
+  - Contains spatial covariate data
+  - Variables include:
+    - ID
+    - Long30m
+    - Lat30m
+    - Hwy_Roads
+    - Major_Roads             
+    - Res_Roads               
+    - Local_Trucks           
+    - Local_Restricted_Trucks
+    - Commerical.Zone         
+    - Industrial.Zone         
+    - Residential.Zone       
+    - NDVI_50                 
+    - NLCD_Water_50           
+    - NLCD_DevOpen_50         
+    - NLCD_DevLow_50         
+    - NLCD_DevMed_50          
+    - NLCD_DevHigh_50         
+    - NLCD_Barren_50          
+    - NLCD_Deciduous_50      
+    - NLCD_Evergreen_50      
+    - NLCD_MixForest_50       
+    - NLCD_Shrub_50           
+    - NLCD_Herbaceous_50     
+    - NLCD_Pasture_50         
+    - NLCD_Crops_50          
+    - NLCD_WoodyWet_50        
+    - NLCD_EmergWet_50       
+    - Impervious_50         
+    - Distance_to_NPL         
+    - Distance_to_Rail        
+    - Elevation_50        
+    - Distance_to_TRI        
+    - Total_Road_50         
+    - Hwy_Road_50            
+    - Maj_Road_50            
+    - Res_Road_50             
+    - Pop_50                  
+    - MinDist2Port           
+    - MinDist2MainPort       
+    - Dist2MainAirport        
+    - Dist2Airport     
 
 ## R/C++ Files
 

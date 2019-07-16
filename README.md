@@ -93,7 +93,9 @@ The following section walks through the various components of <tt> run\_all\_cod
 ### Set Parameters
 
 ``` r
-rolling_window = FALSE # should rolling window estimation be performed (computationally expensive)
+rolling_window = FALSE # should rolling window estimation be performed? (computationally expensive)
+# it is recommended that rolling window estimation is NOT performed on the simulated data as the 
+# temporal domain is not as long as the actual data
 
 type <- 2; # type in 1:3, defines which data product to use 
 # 1 == raw data, 2 == 15sec aggregates, 3 == 1min aggregates

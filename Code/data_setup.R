@@ -34,8 +34,8 @@ junk7     <- grepl("_10K",X_names)
 junk      <- junk1 | junk2 | junk3 | junk4 | junk5 | junk6 | junk7
 X         <- X[,!junk]
 
-X_sim         <- covs[,!junk]
-X_sim <- X_sim[,-c(1:3,6,18:19,21,24:27,39,40)] # matrix of included covariates
+X_sim         <- covs[,-c(1:3)][,!junk]
+X_sim <- X_sim[,-c(3,15:16,18,21:24,36,37)]
 
 ## principal component analysis
 pc <- prcomp(X_sim, scale.=TRUE, center=TRUE)

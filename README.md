@@ -85,7 +85,7 @@ R/C++ Files
 -   <tt> R </tt> script to perform analysis included in the paper on simulated data provided in the Data folder
 -   Calls the follwing helper scripts
     -   <tt> data\_setup.R </tt>
-        -   cleans up raw data and performs temporal aggregation at 15s, 30s, and 1min block medians
+        -   cleans up raw data and performs temporal aggregation at 15 sec and 1 min block medians
         -   each aggregated dataset is saved and stored in <tt> data\_blockmed.Rda </tt>
     -   <tt> st\_stx\_estimation\_prediction.R </tt>
         -   performs parameter estimation and prediction for the ST and STx models
@@ -97,23 +97,26 @@ R/C++ Files
         -   creates 15 min ahead spatial map forecasts for the ST model for two days
         -   used to recreate maps contained in Figures 5 and 6 of the paper
     -   <tt> rolling\_window\_estimation.R </tt>
+        -   performs ST and STx model estimation on data in 21-week rolling windows
+        -   results are stored in <tt> .Rda </tt> files
     -   <tt> deployment\_design.R </tt>
+        -   performs the simulation experiment comparing mspe for mobile vs fixed-location monitors
 
 <tt> plotting\_code.R </tt>
+
+-   Contains code to construct the plots include in the paper after obtaining all results from <tt>run\_all\_code.R</tt>
 
 Reproducing the analysis on simulated data
 ------------------------------------------
 
-The R script <tt> run\_all\_code.R </tt> illustrates the analysis performed in \`\`Fine-scale spatiotemporal air pollution analysis using mobile monitors on Google Street View vehicles" using simulated data. An interested user can obtain the actual data used from [here](https://docs.google.com/forms/d/e/1FAIpQLSf_4GIkK1tmVMFRSxz42KgvOM3Z3NGeOFFje_FS8FBbz1vTig/viewform), in which case the <tt> R </tt> script should recreate the analysis included in the paper.
+The R script <tt> run\_all\_code.R </tt> illustrates the analysis performed in \`\`Fine-scale spatiotemporal air pollution analysis using mobile monitors on Google Street View vehicles" using simulated data. The simulated data included here is meant to help understand how the following code can be used, but any interested user should obtain the actual data from Google. The data is freely available upon request from [here](https://docs.google.com/forms/d/e/1FAIpQLSf_4GIkK1tmVMFRSxz42KgvOM3Z3NGeOFFje_FS8FBbz1vTig/viewform). Using the real data, the <tt> run\_all\_code.R </tt> should recreate the analysis included in the paper.
 
-The following section walks through the various components of <tt> run\_all\_code.R </tt>.
+The following sections walk through the various components of <tt> run\_all\_code.R </tt>.
 
 ### Set Parameters
 
 ``` r
 rolling_window = FALSE # should rolling window estimation be performed? (computationally expensive)
-# it is recommended that rolling window estimation is NOT performed on the simulated data as the 
-# temporal domain is not as long as the actual data
 
 type <- 2; # type in 1:3, defines which data product to use 
 # 1 == raw data, 2 == 15sec aggregates, 3 == 1min aggregates
@@ -218,25 +221,25 @@ if(rolling_window){
 
 ``` r
 source("st_stx_estimation_prediction.R") 
-# ST and STx Vecchia estimation and prediction 
-# for type, and combination of h (j) and m (jj) specified above
-# Saves out estimated parameters; 5min, 15min and 60min forecasts; 
-#    Car A predictions; mspe and correlation in ".Rda" files
 # NOTE: this estimation can take several hours to run, depending on the number of cores used
+```
 
+ST and STx Vecchia estimation and prediction for <tt>type</tt>, and combination of <tt>h</tt> (<tt>j</tt>) and <tt>m</tt> (<tt>jj</tt>) specified above. Saves out estimated parameters; 5min, 15min and 60min forecasts; Car A predictions; mspe and correlation in <tt>.Rda</tt> files.
+
+``` r
 source("spatial_only_estimation_prediction.R")
-# S model Vecchia approximation estimation and prediction
-# for type, and combination of h (j) and m (jj) specified above
-# Saves out estimated parameters; spatial predictions; 
-#    Car A predictions; mspe and correlation in ".Rda" files
-# NOTE: this estimation can take several hours to run, depending on the number of cores used
+# NOTE: this can take several hours to run, depending on the number of cores used.
+```
 
+S model Vecchia approximation estimation and prediction for <tt>type</tt>, and combination of <tt>h</tt> (<tt>j</tt>) and <tt>m</tt> (<tt>jj</tt>) specified above. Saves out estimated parameters, spatial predictions, Car A predictions, mspe and correlation in <tt>.Rda</tt> files
+
+``` r
 if(rolling_window){
   source("rolling_window_estimation.R")
 }
-# Performs ST and STx Vecchia estimation and prediction on data within 2 week moving windows
-# Saves out each windows estimated parameters in ".Rda" files
 ```
+
+ST and STx Vecchia estimation and prediction using rolling windows with window size lag = 21 weeks. For example, data from week 1-21 are used for parameter estimation, then prediction is made for week 22. This procedure is then repeated for the next window of week 2-22. The rolling window analysis to compare ST and STx Vecchia models is performed in parallel for each window in practice. It is not performed here by default (<tt>rolling\_window = FALSE</tt>) because the example simulated data spans only two months. The results are saved out for each window in <tt>.Rda</tt> files
 
 ### Map Forecasts
 
@@ -247,9 +250,9 @@ if(type == 2){
     source("15min_map_forecasts.R")
   }
 }
-# Creates full spatial 15-min ahead map forecasts for the two different days 
-# and times included in the paper (Figures 5 and 6).
 ```
+
+Creates full spatial 15-min ahead map forecasts for the two different days and times included in the paper (Figures 5 and 6).
 
 ### Mobile vs. Stationary Simulation
 
@@ -258,3 +261,5 @@ source("deployment_design.R")
 
 # NOTE: this can take several hours to run, depending on the number of cores used.
 ```
+
+Performs a simulation experiment comparing mean squared prediction error (MSPE) for mobile vs fixed-location monitors for short-term forecasting and spatial interpolation. For <tt>ncar=1,...,15</tt> and <tt>nstation=1,...,15</tt>, we sample <tt>ncar</tt> number of routes from the Google data and randomly select <tt>nstation</tt> number of locations in the study region as fixed-location monitors. The MSPE is computed for both type of monitors conditional on locations from ncar and nstation of monitors respectively. This procedure is repeated 30 times to obtain uncertainty of the MSPE.

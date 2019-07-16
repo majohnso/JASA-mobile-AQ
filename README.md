@@ -26,13 +26,14 @@ Data Files
 #### Data\_Covariates.csv
 
 -   Contains spatial covariate data
--   Variables include:ID: 30m road segment IDs
-     -  Long30m: Longitude
-     -  Lat30m: Latitude
+-   Variables include:
+    -   ID: 30m road segment IDs
+    -   Long30m: Longitude
+    -   Lat30m: Latitude
     
-        Belows are binary road classification variable: 
-     -  Hwy\_Roads:   highways 
-     -  Major\_Roads:  major arterials 
+        Below  are binary road classification variable: 
+    -   Hwy\_Roads:   highways 
+    -   Major\_Roads:  major arterials 
     -   Res\_Roads:  residential road  
     -   Local\_Trucks: designated heavy-duty truck routes 
     -   Local\_Restricted\_Trucks: restricted heavy-duty truck routes 
@@ -41,7 +42,7 @@ Data Files
     -   Residential.Zone: residential zoning
     -   NDVI\_50: The average Normalized Difference Vegetative Index within circular buffer of 50 meters
 
-    Belows are constructed based on the National Land Cover Database satellite imagery file.
+    Below are constructed based on the National Land Cover Database satellite imagery file.
     Each variable shows the percent of land cover of type within a circular buffer of 50 meters.
     -   NLCD\_Water\_50: water
     -   NLCD\_DevOpen\_50: developed on
@@ -60,7 +61,7 @@ Data Files
     -   NLCD\_EmergWet\_50: EmergWet
     -   NLCD\_Impervious\_50: Impervious surface
 
-    Belows are cumulative exponentially decaying contribution from point sources
+    Below are cumulative exponentially decaying contribution from point sources
     -   Distance\_to\_NPL: National Priority Listing (NPL) sites
     -   Distance\_to\_Rail: railroads
     -   Distance\_to\_TRI: Toxic Release Inventory (TRI) sites
@@ -72,7 +73,7 @@ Data Files
     -   Res\_Road\_50: residential roads within a circular buffer of 50 meters
     -   Pop\_50: population density (people/sq-km) within a circular buffer 50 meter. 
 
-    Belows are minimum inverse distance to point sources
+    Below are minimum inverse distance to point sources
     -   MinDist2Port: all principal port and facility locations 
     -   MinDist2MainPort: principal port locations
     -   Dist2MainAirport: Major airports

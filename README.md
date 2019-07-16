@@ -37,7 +37,7 @@ Data Files
     -   Res\_Road\_50: residential roads within a circular buffer of 50 meters
     -   Pop\_50: population density (people/sq-km) within a circular buffer 50 meter. 
     
-        Below  are binary road classification variable: 
+    Below  are binary road classification variable: 
     -   Hwy\_Roads:   highways 
     -   Major\_Roads:  major arterials 
     -   Res\_Roads:  residential road  

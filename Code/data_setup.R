@@ -24,20 +24,11 @@ X         <- as.matrix(covs[nn,-c(1:3)])
 Y         <- log(Y)
 
 X_names   <- colnames(X)
-junk1     <- grepl("_100",X_names) # getting rid of larger distance average
-junk2     <- grepl("_250",X_names)
-junk3     <- grepl("_500",X_names)
-junk4     <- grepl("_1000",X_names)
-junk5     <- grepl("_2500",X_names)
-junk6     <- grepl("_5000",X_names)
-junk7     <- grepl("_10K",X_names)
-junk      <- junk1 | junk2 | junk3 | junk4 | junk5 | junk6 | junk7
-X         <- X[,!junk]
-
-X_sim         <- covs[,-c(1:3)][,!junk]
-X_sim <- X_sim[,-c(3,15:16,18,21:24,36,37)]
 
 ## principal component analysis
+X_sim         <- covs[,-c(1:3)]
+X_sim <- X_sim[,-c(3,15:16,18,21:24,36,37)]
+
 pc <- prcomp(X_sim, scale.=TRUE, center=TRUE)
 percvar <- cumsum(pc$sdev^2)/sum(pc$sdev^2)
 id <- sum(percvar <= 0.5) + 1

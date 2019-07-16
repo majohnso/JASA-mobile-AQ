@@ -116,7 +116,9 @@ maxit <- 1e3 # maximum number of iterations for Nelder-Mead maximization of Vecc
 ### Load R Packages
 
 ``` r
-pkg.names <- c("Rcpp", "RcppArmadillo", "doParallel", "RANN", "chron", "fields", "dplyr", "FNN", "ggplot2", "ggmap")
+pkg.names <- c("Rcpp", "RcppArmadillo", "doParallel", "RANN", "chron", "fields", 
+               "dplyr", "FNN", "ggplot2", "ggmap")
+
 for(i in 1:length(pkg.names)){
   if(pkg.names[i] %in% rownames(installed.packages()) == FALSE) {
     install.packages(pkg.names[i])
@@ -146,6 +148,8 @@ source("data_setup.R")
 # Data_IDs.csv # road segment ID
 # Data_Covariates.csv #GIS covariates
 # oakland_data_simulated.csv # simulated Google car dataset
+#
+# Saves out temporally aggregated datasets in "data_blockmed.Rda"
 ```
 
 ### Model Fitting Setup
@@ -195,17 +199,23 @@ if(rolling_window){
 ``` r
 source("st_stx_estimation_prediction.R") 
 # ST and STx Vecchia estimation and prediction 
-# for type, and combination of h (j) and m (jj)
-# NOTE: this takes a long time to run
+# for type, and combination of h (j) and m (jj) specified above
+# Saves out estimated parameters; 5min, 15min and 60min forecasts; 
+#    Car A predictions; mspe and correlation in ".Rda" files
+# NOTE: this estimation can take several hours to run, depending on the number of cores used
+
+source("spatial_only_estimation_prediction.R")
+# S model Vecchia approximation estimation and prediction
+# for type, and combination of h (j) and m (jj) specified above
+# Saves out estimated parameters; spatial predictions; 
+#    Car A predictions; mspe and correlation in ".Rda" files
+# NOTE: this estimation can take several hours to run, depending on the number of cores used
 
 if(rolling_window){
   source("rolling_window_estimation.R")
 }
-
-source("spatial_only_estimation_prediction.R")
-# S model Vecchia approximation estimation and prediction
-# for type, and combination of h (j) and m (jj)
-# NOTE: this takes a long time to run
+# Performs ST and STx Vecchia estimation and prediction on data within 2 week moving windows
+# Saves out each windows estimated parameters in ".Rda" files
 ```
 
 ### Map Forecasts
@@ -217,11 +227,14 @@ if(type == 2){
     source("15min_map_forecasts.R")
   }
 }
+# Creates full spatial 15-min ahead map forecasts for the two different days 
+# and times included in the paper (Figures 5 and 6).
 ```
 
 ### Mobile vs. Stationary Simulation
 
 ``` r
 source("deployment_design.R")
-# NOTE: this takes a long time to run
+
+# NOTE: this can take several hours to run, depending on the number of cores used.
 ```

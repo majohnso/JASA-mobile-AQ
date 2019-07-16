@@ -30,6 +30,12 @@ Data Files
     -   ID: 30m road segment IDs
     -   Long30m: Longitude
     -   Lat30m: Latitude
+    -   Elevation\_50: mean elevation within a circular buffer of 50 meters
+    -   Total\_Road\_50: total road lengths for highways, major arterials, residential roads within a circular buffer of 50 meters
+    -   Hwy\_Road\_50: highways road length within a circular buffer of 50 meters
+    -   Maj\_Road\_50: major arterials road length within a circular buffer of 50 meters
+    -   Res\_Road\_50: residential roads within a circular buffer of 50 meters
+    -   Pop\_50: population density (people/sq-km) within a circular buffer 50 meter. 
     
         Below  are binary road classification variable: 
     -   Hwy\_Roads:   highways 
@@ -65,13 +71,6 @@ Data Files
     -   Distance\_to\_NPL: National Priority Listing (NPL) sites
     -   Distance\_to\_Rail: railroads
     -   Distance\_to\_TRI: Toxic Release Inventory (TRI) sites
-
-    -   Elevation\_50: mean elevation within a circular buffer of 50 meters
-    -   Total\_Road\_50: total road lengths for highways, major arterials, residential roads within a circular buffer of 50 meters
-    -   Hwy\_Road\_50: highways road length within a circular buffer of 50 meters
-    -   Maj\_Road\_50: major arterials road length within a circular buffer of 50 meters
-    -   Res\_Road\_50: residential roads within a circular buffer of 50 meters
-    -   Pop\_50: population density (people/sq-km) within a circular buffer 50 meter. 
 
     Below are minimum inverse distance to point sources
     -   MinDist2Port: all principal port and facility locations 

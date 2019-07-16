@@ -27,47 +27,56 @@ Data Files
 
 -   Contains spatial covariate data
 -   Variables include:
-    -   ID
-    -   Long30m
-    -   Lat30m
-    -   Hwy\_Roads
-    -   Major\_Roads
-    -   Res\_Roads
-    -   Local\_Trucks
-    -   Local\_Restricted\_Trucks
-    -   Commerical.Zone
-    -   Industrial.Zone
-    -   Residential.Zone
-    -   NDVI\_50
-    -   NLCD\_Water\_50
-    -   NLCD\_DevOpen\_50
-    -   NLCD\_DevLow\_50
-    -   NLCD\_DevMed\_50
-    -   NLCD\_DevHigh\_50
-    -   NLCD\_Barren\_50
-    -   NLCD\_Deciduous\_50
-    -   NLCD\_Evergreen\_50
-    -   NLCD\_MixForest\_50
-    -   NLCD\_Shrub\_50
-    -   NLCD\_Herbaceous\_50
-    -   NLCD\_Pasture\_50
-    -   NLCD\_Crops\_50
-    -   NLCD\_WoodyWet\_50
-    -   NLCD\_EmergWet\_50
-    -   Impervious\_50
-    -   Distance\_to\_NPL
-    -   Distance\_to\_Rail
-    -   Elevation\_50
-    -   Distance\_to\_TRI
-    -   Total\_Road\_50
-    -   Hwy\_Road\_50
-    -   Maj\_Road\_50
-    -   Res\_Road\_50
-    -   Pop\_50
-    -   MinDist2Port
-    -   MinDist2MainPort
-    -   Dist2MainAirport
-    -   Dist2Airport
+    -   ID: 30m road segment IDs
+    -   Long30m: Longitude
+    -   Lat30m: Latitude
+    -   Elevation\_50: mean elevation within a circular buffer of 50 meters
+    -   Total\_Road\_50: total road lengths for highways, major arterials, residential roads within a circular buffer of 50 meters
+    -   Hwy\_Road\_50: highways road length within a circular buffer of 50 meters
+    -   Maj\_Road\_50: major arterials road length within a circular buffer of 50 meters
+    -   Res\_Road\_50: residential roads within a circular buffer of 50 meters
+    -   Pop\_50: population density (people/sq-km) within a circular buffer 50 meter. 
+    
+    Below  are binary road classification variable: 
+    -   Hwy\_Roads:   highways 
+    -   Major\_Roads:  major arterials 
+    -   Res\_Roads:  residential road  
+    -   Local\_Trucks: designated heavy-duty truck routes 
+    -   Local\_Restricted\_Trucks: restricted heavy-duty truck routes 
+    -   Commerical.Zone: commercial zoning
+    -   Industrial.Zone: industrial zoning
+    -   Residential.Zone: residential zoning
+    -   NDVI\_50: The average Normalized Difference Vegetative Index within circular buffer of 50 meters
+
+    Below are constructed based on the National Land Cover Database satellite imagery file.
+    Each variable shows the percent of land cover of type within a circular buffer of 50 meters.
+    -   NLCD\_Water\_50: water
+    -   NLCD\_DevOpen\_50: developed on
+    -   NLCD\_DevLow\_50: developed low
+    -   NLCD\_DevMed\_50: developed medium
+    -   NLCD\_DevHigh\_50: developed high
+    -   NLCD\_Barren\_50: barren
+    -   NLCD\_Deciduous\_50: deciduous forest
+    -   NLCD\_Evergreen\_50: evergreen forest
+    -   NLCD\_MixForest\_50: mixed forest
+    -   NLCD\_Shrub\_50: shrub
+    -   NLCD\_Herbaceous\_50: herbaceous
+    -   NLCD\_Pasture\_50: pasture
+    -   NLCD\_Crops\_50: crops
+    -   NLCD\_WoodyWet\_50: woody wet
+    -   NLCD\_EmergWet\_50: EmergWet
+    -   NLCD\_Impervious\_50: Impervious surface
+
+    Below are cumulative exponentially decaying contribution from point sources
+    -   Distance\_to\_NPL: National Priority Listing (NPL) sites
+    -   Distance\_to\_Rail: railroads
+    -   Distance\_to\_TRI: Toxic Release Inventory (TRI) sites
+
+    Below are minimum inverse distance to point sources
+    -   MinDist2Port: all principal port and facility locations 
+    -   MinDist2MainPort: principal port locations
+    -   Dist2MainAirport: Major airports
+    -   Dist2Airport: airports 
 
 R/C++ Files
 -----------

@@ -72,14 +72,18 @@ Data Files
 R/C++ Files
 -----------
 
--   <tt> data\_setup.R </tt>
 -   <tt> cpp\_code\_GC.cpp </tt>
+    -   contains helper c++ files to speed up estimation and prediction
 -   <tt> Rfunctions\_GC.R </tt>
--   <tt> rolling\_window\_estimation.R </tt>
+    -   contains all R functions to perform estimation and prediction for the STx, ST and S models
+-   <tt> data\_setup.R </tt>
+    -   cleans up raw data and performs temporal aggregation at 15s, 30s, and 1min block medians
+    -   each aggregated dataset is saved and stored in <tt> data\_blockmed.Rda </tt>
 -   <tt> spatial\_only\_estimation\_prediciton.R </tt>
 -   <tt> st\_stx\_estimation\_prediction.R </tt>
--   <tt> deployment\_design.R </tt>
 -   <tt> 15min\_map\_forecasts.R </tt>
+-   <tt> rolling\_window\_estimation.R </tt>
+-   <tt> deployment\_design.R </tt>
 -   <tt> plotting\_code.R </tt>
 -   <tt> run\_all\_code.R </tt>
 

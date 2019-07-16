@@ -69,14 +69,24 @@ output: rmarkdown::github_document
 
 ## R/C++ Files
 
-  - <tt> data_setup.R </tt>
   - <tt> cpp_code_GC.cpp </tt>
+    - contains helper c++ files to speed up estimation and prediction
   - <tt> Rfunctions_GC.R </tt>
-  - <tt> rolling_window_estimation.R </tt>
-  - <tt> spatial_only_estimation_prediciton.R </tt>
+    - contains all R functions to perform estimation and prediction for the STx, ST and S models
+  - <tt> data_setup.R </tt>
+    - cleans up raw data and performs temporal aggregation at 15s, 30s, and 1min block medians
+    - each aggregated dataset is saved and stored in <tt> data_blockmed.Rda </tt>
   - <tt> st_stx_estimation_prediction.R </tt>
-  - <tt> deployment_design.R </tt>
+    - performs parameter estimation and prediction for the ST and STx models
+    - results are stored as <tt> R </tt> objects and saved out in <tt> .Rda </tt> files
+  - <tt> spatial_only_estimation_prediciton.R </tt>
+    - performs parameter estimation and prediction for the S (spatial only) model
+    - results are stored as <tt> R </tt> objects and saved out in <tt> .Rda </tt> files
   - <tt> 15min_map_forecasts.R </tt>
+    - creates 15 min ahead spatial map forecasts for the ST model for two days
+    - used to recreate maps contained in Figures 5 and 6 of the paper
+  - <tt> rolling_window_estimation.R </tt>
+  - <tt> deployment_design.R </tt>
   - <tt> plotting_code.R </tt>
   - <tt> run_all_code.R </tt>
 

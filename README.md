@@ -72,20 +72,34 @@ Data Files
 R/C++ Files
 -----------
 
--   <tt> cpp\_code\_GC.cpp </tt>
-    -   contains helper c++ files to speed up estimation and prediction
--   <tt> Rfunctions\_GC.R </tt>
-    -   contains all R functions to perform estimation and prediction for the STx, ST and S models
--   <tt> data\_setup.R </tt>
-    -   cleans up raw data and performs temporal aggregation at 15s, 30s, and 1min block medians
-    -   each aggregated dataset is saved and stored in <tt> data\_blockmed.Rda </tt>
--   <tt> spatial\_only\_estimation\_prediciton.R </tt>
--   <tt> st\_stx\_estimation\_prediction.R </tt>
--   <tt> 15min\_map\_forecasts.R </tt>
--   <tt> rolling\_window\_estimation.R </tt>
--   <tt> deployment\_design.R </tt>
--   <tt> plotting\_code.R </tt>
--   <tt> run\_all\_code.R </tt>
+<tt> Rfunctions\_GC.R </tt>
+
+-   contains all R functions to perform estimation and prediction for the STx, ST and S models
+
+<tt> cpp\_code\_GC.cpp </tt>
+
+-   contains helper c++ files to speed up estimation and prediction
+
+<tt> run\_all\_code.R </tt>
+
+-   <tt> R </tt> script to perform analysis included in the paper on simulated data provided in the Data folder
+-   Calls the follwing helper scripts
+    -   <tt> data\_setup.R </tt>
+        -   cleans up raw data and performs temporal aggregation at 15s, 30s, and 1min block medians
+        -   each aggregated dataset is saved and stored in <tt> data\_blockmed.Rda </tt>
+    -   <tt> st\_stx\_estimation\_prediction.R </tt>
+        -   performs parameter estimation and prediction for the ST and STx models
+        -   results are stored as <tt> R </tt> objects and saved out in <tt> .Rda </tt> files
+    -   <tt> spatial\_only\_estimation\_prediciton.R </tt>
+        -   performs parameter estimation and prediction for the S (spatial only) model
+        -   results are stored as <tt> R </tt> objects and saved out in <tt> .Rda </tt> files
+    -   <tt> 15min\_map\_forecasts.R </tt>
+        -   creates 15 min ahead spatial map forecasts for the ST model for two days
+        -   used to recreate maps contained in Figures 5 and 6 of the paper
+    -   <tt> rolling\_window\_estimation.R </tt>
+    -   <tt> deployment\_design.R </tt>
+
+<tt> plotting\_code.R </tt>
 
 Reproducing the analysis on simulated data
 ------------------------------------------

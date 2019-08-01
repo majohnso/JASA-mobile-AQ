@@ -1,7 +1,7 @@
 README
 ================
 
-This repository contains simulated data, covariates, and code to illustrate the methodology and analysis published in \`\`Fine-scale spatiotemporal air pollution analysis using mobile monitors on Google Street View vehicles" (add DOI).
+This repository contains simulated air quality data, covariates, and <tt>R code</tt> to illustrate the methodology and analysis published in \`\`Fine-scale spatiotemporal air pollution analysis using mobile monitors on Google Street View vehicles" (add DOI).
 
 Data Files
 ----------

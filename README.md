@@ -1,6 +1,8 @@
 README
 ================
 
+This repository contains simulated data, covariates, and code to illustrate the methodology and analysis published in \`\`Fine-scale spatiotemporal air pollution analysis using mobile monitors on Google Street View vehicles" (add DOI).
+
 Data Files
 ----------
 
@@ -8,75 +10,68 @@ Data Files
 
 -   Contains simulated Oakland Air Quality data
 -   Variables include:
-    -   Date\_Time
-    -   Car\_Identifier
-    -   Latitude
-    -   Longitude
-    -   Car\_Speed
-    -   NO2
+    -   <tt>Date\_Time</tt>: Data and time (seconds) of each measurement
+    -   <tt>Car\_Identifier</tt>: identifies which car (A or B) obtained the measurement
+    -   <tt>Latitude</tt>: latitude of car position at time of measurement
+    -   <tt>Longitude</tt>: longitude of car position at time of measurement
+    -   <tt>Car\_Speed</tt>: speed of car (km/s)
+    -   <tt>NO2</tt>: measured nitrogen dioxide (ppm)
 
-#### Data\_IDs.csv
+##### Simulation Details
 
--   Contains 30m road segment IDs
--   Variables include:
-    -   Longitude
-    -   Latitude
-    -   ID
+Data are simulated for a subset of 60 days between Sept. 11, 2015 and May 5, 2016. Spatial locations and measurement times are sampled from actual observed car paths, with hour of observation altered to build a sequence of data from 9:00 to 18:00 on each day. Measurements of N02 at the simulated paths and times are constructed as white noise perturbed predictions from the fitted ST model estimated using the actual Google air quality data. The full sequence of simulated data is then subsampled to approximately 1/6 the original size to produce 76,484 total simulated measurements, roughly 10% the size of the actual Oakland data.
+
+Note: the simulated data is meant to help understand how the following code can be used but is not intended to show any interesting results. A interested user should obtain the actual data from Google. The data is freely available upon request [here](https://docs.google.com/forms/d/e/1FAIpQLSf_4GIkK1tmVMFRSxz42KgvOM3Z3NGeOFFje_FS8FBbz1vTig/viewform).
 
 #### Data\_Covariates.csv
 
--   Contains spatial covariate data
+-   Contains (real) spatial covariate data for 30m road segments in Oakland.
 -   Variables include:
-    -   ID: 30m road segment IDs
-    -   Long30m: Longitude
-    -   Lat30m: Latitude
-    -   Elevation\_50: mean elevation within a circular buffer of 50 meters
-    -   Total\_Road\_50: total road lengths for highways, major arterials, residential roads within a circular buffer of 50 meters
-    -   Hwy\_Road\_50: highways road length within a circular buffer of 50 meters
-    -   Maj\_Road\_50: major arterials road length within a circular buffer of 50 meters
-    -   Res\_Road\_50: residential roads within a circular buffer of 50 meters
-    -   Pop\_50: population density (people/sq-km) within a circular buffer 50 meter. 
-    
-    Below  are binary road classification variable: 
-    -   Hwy\_Roads:   highways 
-    -   Major\_Roads:  major arterials 
-    -   Res\_Roads:  residential road  
-    -   Local\_Trucks: designated heavy-duty truck routes 
-    -   Local\_Restricted\_Trucks: restricted heavy-duty truck routes 
-    -   Commerical.Zone: commercial zoning
-    -   Industrial.Zone: industrial zoning
-    -   Residential.Zone: residential zoning
-    -   NDVI\_50: The average Normalized Difference Vegetative Index within circular buffer of 50 meters
-
-    Below are constructed based on the National Land Cover Database satellite imagery file.
-    Each variable shows the percent of land cover of type within a circular buffer of 50 meters.
-    -   NLCD\_Water\_50: water
-    -   NLCD\_DevOpen\_50: developed on
-    -   NLCD\_DevLow\_50: developed low
-    -   NLCD\_DevMed\_50: developed medium
-    -   NLCD\_DevHigh\_50: developed high
-    -   NLCD\_Barren\_50: barren
-    -   NLCD\_Deciduous\_50: deciduous forest
-    -   NLCD\_Evergreen\_50: evergreen forest
-    -   NLCD\_MixForest\_50: mixed forest
-    -   NLCD\_Shrub\_50: shrub
-    -   NLCD\_Herbaceous\_50: herbaceous
-    -   NLCD\_Pasture\_50: pasture
-    -   NLCD\_Crops\_50: crops
-    -   NLCD\_WoodyWet\_50: woody wet
-    -   NLCD\_EmergWet\_50: EmergWet
-    -   NLCD\_Impervious\_50: Impervious surface
-
-    Below are cumulative exponentially decaying contribution from point sources
-    -   Distance\_to\_NPL: National Priority Listing (NPL) sites
-    -   Distance\_to\_Rail: railroads
-    -   Distance\_to\_TRI: Toxic Release Inventory (TRI) sites
-
-    Below are minimum inverse distance to point sources
-    -   MinDist2Port: all principal port and facility locations 
-    -   MinDist2MainPort: principal port locations
-    -   Dist2MainAirport: Major airports
-    -   Dist2Airport: airports 
+    -   <tt>ID</tt>: unique identifier for each 30m road segment
+    -   <tt>Long30m</tt>: longitude at the center of the segment
+    -   <tt>Lat30m</tt>: latitude at the center of the segment
+    -   <tt>Elevation\_50</tt>: mean elevation within a circular buffer of 50 meters
+    -   <tt>Total\_Road\_50</tt>: total length of highways, major road, residential roads within a circular 50 meter buffer region
+    -   <tt>Hwy\_Road\_50</tt>: highways road length within a circular buffer of 50 meters
+    -   <tt>Maj\_Road\_50</tt>: major arterials road length within a circular buffer of 50 meters
+    -   <tt>Res\_Road\_50</tt>: residential roads within a circular buffer of 50 meters
+    -   <tt>Pop\_50</tt>: population density (people/sq-km) within a circular buffer 50 meters
+    -   Binary road classification variables:
+        -   <tt>Hwy\_Roads</tt>: highways
+        -   <tt>Major\_Roads</tt>: major through road
+        -   <tt>Res\_Roads</tt>: residential road
+        -   <tt>Local\_Trucks</tt>: designated heavy-duty truck routes
+        -   <tt>Local\_Restricted\_Trucks</tt>: restricted heavy-duty truck routes
+        -   <tt>Commerical.Zone</tt>: commercial zoning
+        -   <tt>Industrial.Zone</tt>: industrial zoning
+        -   <tt>Residential.Zone</tt>: residential zoning
+        -   <tt>NDVI\_50</tt>: The average Normalized Difference Vegetative Index within circular buffer of 50 meters
+    -   Variables constructed based on the National Land Cover Database satellite imagery file. Each variable shows the percent of land cover of type within a circular buffer of 50 meters.
+        -   <tt>NLCD\_Water\_50</tt>: water
+        -   <tt>NLCD\_DevOpen\_50</tt>: open areas in developments
+        -   <tt>NLCD\_DevLow\_50</tt>: low developed areas
+        -   <tt>NLCD\_DevMed\_50</tt>: medium developed areas
+        -   <tt>NLCD\_DevHigh\_50</tt>: highly developed areas
+        -   <tt>NLCD\_Barren\_50</tt>: barren
+        -   <tt>NLCD\_Deciduous\_50</tt>: deciduous forest
+        -   <tt>NLCD\_Evergreen\_50</tt>: evergreen forest
+        -   <tt>NLCD\_MixForest\_50</tt>: mixed forest
+        -   <tt>NLCD\_Shrub\_50</tt>: shrublands
+        -   <tt>NLCD\_Herbaceous\_50</tt>: herbaceous
+        -   <tt>NLCD\_Pasture\_50</tt>: pasture
+        -   <tt>NLCD\_Crops\_50</tt>: crops
+        -   <tt>NLCD\_WoodyWet\_50</tt>: woody wetlands
+        -   <tt>NLCD\_EmergWet\_50</tt>: emerging wetlands
+        -   <tt>NLCD\_Impervious\_50</tt>: impervious surface
+    -   Variables representing cumulative exponentially decaying contribution from point sources
+        -   <tt>Distance\_to\_NPL</tt>: National Priority Listing (NPL) sites
+        -   <tt>Distance\_to\_Rail</tt>: railroads
+        -   <tt>Distance\_to\_TRI</tt>: Toxic Release Inventory (TRI) sites
+    -   Variables representing minimum inverse distance to point sources
+        -   <tt>MinDist2Port</tt>: all principal port and facility locations
+        -   <tt>MinDist2MainPort</tt>: principal port locations
+        -   <tt>Dist2MainAirport</tt>: Major airports
+        -   <tt>Dist2Airport</tt>: airports
 
 R/C++ Files
 -----------
@@ -118,9 +113,9 @@ R/C++ Files
 Reproducing the analysis on simulated data
 ------------------------------------------
 
-The R script <tt> run\_all\_code.R </tt> illustrates the analysis performed in \`\`Fine-scale spatiotemporal air pollution analysis using mobile monitors on Google Street View vehicles" using simulated data. The simulated data included here is meant to help understand how the following code can be used, but any interested user should obtain the actual data from Google. The data is freely available upon request from [here](https://docs.google.com/forms/d/e/1FAIpQLSf_4GIkK1tmVMFRSxz42KgvOM3Z3NGeOFFje_FS8FBbz1vTig/viewform). Using the real data, the <tt> run\_all\_code.R </tt> should recreate the analysis included in the paper.
+The R script <tt> run\_all\_code.R </tt> illustrates the analysis performed in \`\`Fine-scale spatiotemporal air pollution analysis using mobile monitors on Google Street View vehicles" using simulated data. If the user obtains the actual Google data, <tt> run\_all\_code.R </tt> should recreate the analysis included in the paper.
 
-The following sections walk through the various components of <tt> run\_all\_code.R </tt>.
+The following sections walk through the various components of <tt> run\_all\_code.R </tt>. Note that this <tt>R</tt> script and all others assume the data and scripts are all stored in a single, common folder.
 
 ### Set Parameters
 

@@ -58,7 +58,6 @@ sourceCpp("cpp_code_GC.cpp")
 
 source("data_setup.R")
 ## Necessary files loaded in data_setup.R:
-# Data_IDs.csv # road segment ID
 # Data_Covariates.csv #GIS covariates
 # oakland_data_simulated.csv # simulated Google car dataset
 

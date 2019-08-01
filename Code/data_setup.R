@@ -5,15 +5,13 @@
 # require(fields)
 
 # load data ---------------------------------------------------------------
-segs_name <- "Data_IDs.csv" # road segment ID
 covs_name <- "Data_Covariates.csv" #GIS covariates
 goog_name <- "oakland_data_simulated.csv" # raw google car data
 
-segs      <- suppressWarnings(read.csv(segs_name,nrows=Inf))
 covs      <- suppressWarnings(read.csv(covs_name,nrows=Inf))
 goog      <- suppressWarnings(read.csv(goog_name,nrows=Inf,as.is=TRUE))
 
-rm(segs_name,covs_name,goog_name)
+rm(covs_name,goog_name)
 
 goog      <- goog[!is.na(goog[,6]),] # work with NO2 data, rm NAs
 goog      <- goog[order(goog$Date_Time),]
@@ -64,7 +62,7 @@ wday      <- weekdays(t,abbreviate = T)
 date      <- julian(month, day, year,origin=c(1,1,2015))
 t         <- julian(month, day, year,origin=c(1,1,2015))+hour/24+min/(60*24)+sec/(60*60*24)
 n         <- length(Y)
-rm(covs,segs,nn,X_sim,X_sim2)
+rm(covs,nn,X_sim,X_sim2)
 df <- data.frame(locID = spID, s, speed, Y, Car = car, year, month, day, hour, min, sec, wday, t, X,X_PC)
 
 junk = c("Res_Roads", "NLCD_Barren_50",  
